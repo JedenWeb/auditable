@@ -1,0 +1,27 @@
+<ul class="timeline timeline-inverse">
+	<li class="time-label">
+		<span class="bg-purple" n:if="$lastMessage">
+			{$lastMessage->getCreatedAt()|date:'j.n.Y H:i'}
+		</span>
+	</li>
+
+	<li n:foreach="$messages as $message">
+		{var $type = $message->getType()}
+		{var $icon = $statusTypes[$type]['icon']}
+		{var $color = $statusTypes[$type]['color']}
+
+	  	<span class="fa fa-{$icon} bg-{$color}" title="ID: {$message->getId()}"></span>
+
+	  	<div class="timeline-item">
+			<span class="time"><i class="fa fa-clock-o"></i> {$message->getCreatedAt()|date:'j.n.Y H:i'}</span>
+			<p class="timeline-header no-border">
+				{if $issuer = $message->getCreatedBy()}
+					<a href="#"><strong>{$issuer->getId()}</strong></a>
+				{else}
+					<strong>System</strong>
+				{/if}
+				{$message->getMessage()}
+		  	</p>
+	  	</div>
+	</li>
+</ul>

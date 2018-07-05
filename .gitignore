@@ -1,0 +1,5 @@
+cli-config.php
+composer.lock
+/vendor/
+/tests/tmp/
+/tests/database.neon
