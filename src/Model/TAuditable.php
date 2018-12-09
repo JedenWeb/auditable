@@ -13,7 +13,7 @@ trait TAuditable
 
 	public function addAuditMessage(AuditMessage $auditMessage): void
 	{
-		if ($this->auditMessages === NULL) {
+		if ($this->auditMessages === null) {
 			$this->auditMessages = new ArrayCollection;
 		}
 
@@ -23,7 +23,7 @@ trait TAuditable
 	/** @return AuditMessage[] */
 	public function getAuditMessages(): array
 	{
-		return $this->auditMessages->toArray();
+		return $this->auditMessages === null ? [] : $this->auditMessages->toArray();
 	}
 
 }
