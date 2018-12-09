@@ -11,7 +11,12 @@ trait TAuditable
 	/** @var Collection */
 	protected $auditMessages;
 
-	public function addAuditMessage(AuditMessage $auditMessage): void
+	public function addAuditMessage(string $message, string $type = 'info', IAuthor $createdBy = null): void
+	{
+		$this->addAuditMessageEntity(new AuditMessage($message, $type, $createdBy));
+	}
+
+	public function addAuditMessageEntity(AuditMessage $auditMessage): void
 	{
 		if ($this->auditMessages === null) {
 			$this->auditMessages = new ArrayCollection;

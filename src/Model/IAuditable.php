@@ -5,7 +5,9 @@ namespace JedenWeb\AuditableModule\Model;
 interface IAuditable
 {
 
-	public function addAuditMessage(AuditMessage $auditMessage): void;
+	public function addAuditMessage(string $message, string $type = 'info', IAuthor $createdBy = null): void;
+
+	public function addAuditMessageEntity(AuditMessage $auditMessage): void;
 
 	/** @return AuditMessage[] */
 	public function getAuditMessages(): array;
