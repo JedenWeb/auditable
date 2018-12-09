@@ -3,8 +3,8 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
-        "nette/di": "^2.4",
-        "nette/application": "^2.4",
+        "nette/di": "^2.4|^3.0",
+        "nette/application": "^2.4|^3.0",
         "doctrine/orm": "^2.6",
         "ramsey/uuid-doctrine": "^1.4"
     },
