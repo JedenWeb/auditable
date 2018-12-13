@@ -7,4 +7,6 @@ interface IAuthor
 
 	public function getId();
 
+	public function getAuditCaption(): string;
+
 }

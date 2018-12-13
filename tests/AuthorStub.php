@@ -24,4 +24,9 @@ class AuthorStub implements IAuthor
 		return $this->id;
 	}
 
+	public function getAuditCaption(): string
+	{
+		return 'Author ' . $this->id;
+	}
+
 }
