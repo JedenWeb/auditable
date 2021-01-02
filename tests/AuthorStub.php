@@ -19,7 +19,7 @@ class AuthorStub implements IAuthor
 	 */
 	private $id = 1;
 
-	public function getId()
+	public function getId(): int
 	{
 		return $this->id;
 	}

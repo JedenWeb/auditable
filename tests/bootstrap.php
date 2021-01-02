@@ -11,11 +11,25 @@ define('TEMP_DIR', __DIR__ . '/tmp/' . lcg_value());
 @mkdir(dirname(TEMP_DIR));
 @mkdir(TEMP_DIR);
 
+/**
+ * @param \Nette\DI\ContainerBuilder|\Nette\DI\Compiler $source
+ * @param string|array<string, mixed> $config
+ * @param array<string, mixed> $params
+ */
 function createContainer($source, $config = null, $params = []): ?Nette\DI\Container
 {
 	$class = 'Container' . md5((string) lcg_value());
 	if ($source instanceof Nette\DI\ContainerBuilder) {
-		$code = implode('', (new Nette\DI\PhpGenerator($source))->generate($class));
+
+
+	    $generator = new Nette\DI\PhpGenerator($source);
+	    $classType = $generator->generate($class);
+
+	    if (\is_array($classType)) { // BC
+	        $code = \implode('', $classType);
+        } else {
+            $code = $generator->toString($classType);
+        }
 	} elseif ($source instanceof Nette\DI\Compiler) {
 		if (is_string($config)) {
 			$loader = new Nette\DI\Config\Loader;

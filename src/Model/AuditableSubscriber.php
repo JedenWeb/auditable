@@ -57,9 +57,10 @@ class AuditableSubscriber implements EventSubscriber
 
 	private function isAuditable(ClassMetadata $meta): bool
 	{
-		return in_array(IAuditable::class, class_implements($meta->getName()), true);
+		return in_array(IAuditable::class, (array) class_implements($meta->getName()), true);
 	}
 
+	/** @return string[] */
 	public function getSubscribedEvents()
 	{
 		return [

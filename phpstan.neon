@@ -1,9 +1,9 @@
 parameters:
 	excludes_analyse:
 		- %rootDir%/../../../tests/tmp/**/*
-	autoload_files:
-		- %rootDir%/../../../tests/bootstrap.php
 	ignoreErrors:
+		- '~Call to an undefined static method Nette\\Application\\UI\\Control::__construct\(\)~'
+		- '~Call to function is_array\(\) with Nette\\PhpGenerator\\ClassType will always evaluate to false~'
 
 includes:
 	- vendor/phpstan/phpstan-nette/extension.neon

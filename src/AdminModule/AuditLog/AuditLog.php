@@ -19,7 +19,7 @@ class AuditLog extends Control
 	/** @var string */
 	private $templateFile = __DIR__ . '/AuditLog.latte';
 
-	/** @var array */
+	/** @var array<string, array<string, string>> */
 	public $statusTypes = [
 		'info' => [
 			'icon' => 'info',
@@ -37,7 +37,9 @@ class AuditLog extends Control
 
 	public function __construct(IAuditable $auditable)
 	{
-		parent::__construct();
+	    if (\method_exists(parent::class, '__construct')) {
+	        parent::__construct();
+        }
 
 		$this->auditable = $auditable;
 	}

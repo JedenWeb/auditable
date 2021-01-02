@@ -17,8 +17,13 @@ class AuditableExtension extends CompilerExtension
 			->setType(AuditableSubscriber::class)
 			->addTag('kdyby.subscriber');
 
-		$container->addDefinition($this->prefix('auditLog'))
-			->setImplement(IAuditLog::class);
+		if (\method_exists($container, 'addFactoryDefinition')) {
+		    $def = $container->addFactoryDefinition($this->prefix('auditLog'));
+        } else {
+            $def = $container->addDefinition($this->prefix('auditLog'));
+        }
+
+        $def->setImplement(IAuditLog::class);
 	}
 
 }
